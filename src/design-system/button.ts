@@ -1,5 +1,4 @@
 import { cva } from "class-variance-authority";
-import typography from "./typography";
 
 export const buttonConfig = {
   variants: {
@@ -95,7 +94,7 @@ export const buttonConfig = {
     {
       style: "outline",
       state: "hover",
-      className: `border border-border-2 text-text`,
+      className: `border border-border-2 bg-background text-text`,
     },
     {
       style: "outline",
@@ -105,12 +104,12 @@ export const buttonConfig = {
     {
       style: "outline",
       state: "pressed",
-      className: `border border-accent-3 text-text`,
+      className: `border border-accent-3 text-text bg-background-2`,
     },
     {
       style: "outline",
       state: "disabled",
-      className: `border border-accent-3 text-text opacity-75 cursor-not-allowed`,
+      className: `border border-border-subtle text-text opacity-75 cursor-not-allowed`,
     },
 
     // ghost
@@ -223,7 +222,8 @@ export const buttons = cva(
     "items-center",
 
     // typography
-    typography.body,
+    "text-sm",
+    // typography.body,
 
     "outline-offset-0",
   ],

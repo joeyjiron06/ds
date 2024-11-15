@@ -1,100 +1,60 @@
-import defaultConfig from "tailwindcss/defaultConfig";
+import defaultTheme from "tailwindcss/defaultTheme";
+import colors from "tailwindcss/colors";
+
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  safelist: [
-    // "bg-neutral-100",
-    // "bg-neutral-200",
-    // "bg-neutral-300",
-    // "bg-neutral-400",
-    // "bg-neutral-500",
-    // "bg-neutral-600",
-    // "bg-neutral-700",
-    // "bg-neutral-800",
-    // "bg-neutral-900",
-    // "bg-neutral-950",
-    // "text-neutral-100",
-    // "text-neutral-200",
-    // "text-neutral-300",
-    // "text-neutral-400",
-    // "text-neutral-500",
-    // "text-neutral-600",
-    // "text-neutral-700",
-    // "text-neutral-800",
-    // "text-neutral-900",
-    // "text-neutral-950",
-    // "bg-blue-100",
-    // "bg-blue-200",
-    // "bg-blue-300",
-    // "bg-blue-400",
-    // "bg-blue-500",
-    // "bg-blue-600",
-    // "bg-blue-700",
-    // "bg-blue-800",
-    // "bg-blue-900",
-    // "bg-blue-950",
-    // "text-blue-100",
-    // "text-blue-200",
-    // "text-blue-300",
-    // "text-blue-400",
-    // "text-blue-500",
-    // "text-blue-600",
-    // "text-blue-700",
-    // "text-blue-800",
-    // "text-blue-900",
-    // "text-blue-950",
-    // "border-neutral-100",
-    // "border-neutral-200",
-    // "border-neutral-300",
-    // "border-neutral-400",
-    // "border-neutral-500",
-    // "border-neutral-600",
-    // "border-neutral-700",
-    // "border-neutral-800",
-    // "border-neutral-900",
-    // "border-neutral-950",
-    // "outline-black",
-  ],
   theme: {
     container: {
       padding: "0 2rem",
       center: true,
     },
     extend: {
-      fontFamily: {
-        title: defaultConfig.theme.fontFamily.sans,
-        body: defaultConfig.theme.fontFamily.sans,
+      backgroundImage: {
+        'check-outline': `url("data:image/svg+xml,${encodeURIComponent(
+                `<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='${colors.blue['500']}' style='width:24px;height:24px;};'><path stroke-linecap='round' stroke-linejoin='round' d='m4.5 12.75 6 6 9-13.5' /></svg>`
+              )}")`,
+        'check-filled': `url("data:image/svg+xml,${encodeURIComponent(
+                `<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='${colors.gray['100']}' style='width:24px;height:24px; background-color:${colors.blue['500']};'><path stroke-linecap='round' stroke-linejoin='round' d='m4.5 12.75 6 6 9-13.5' /></svg>`
+              )}")`
       },
-      colors: (theme) => ({
+      fontFamily: {
+        title: defaultTheme.fontFamily.sans,
+        body: defaultTheme.fontFamily.sans,
+      },
+      colors: {
+        // TODO: rename to base
         background: {
-          DEFAULT: theme.colors.neutral[100],
-          2: theme.colors.neutral[200],
-          3: theme.colors.neutral[300],
+          DEFAULT: colors.gray[100],
+          2: colors.gray[200],
+          3: colors.gray[300],
         },
 
+        // TODO: rename to foreground
         text: {
-          DEFAULT: theme.colors.neutral[800],
-          2: theme.colors.neutral[900],
-          3: theme.colors.neutral[950],
-          subtle: theme.colors.neutral[700],
+          DEFAULT: colors.gray[800],
+          2: colors.gray[900],
+          3: colors.gray[950],
+          subtle: colors.gray[700],
         },
 
         border: {
-          DEFAULT: theme.colors.neutral[800],
-          2: theme.colors.neutral[900],
-          3: theme.colors.neutral[950],
-          subtle: theme.colors.neutral[700],
+          DEFAULT: colors.slate[300],
+          2: colors.slate[400],
+          3: colors.slate[500],
+          subtle: colors.slate[400],
         },
-
+ 
         accent: {
-          DEFAULT: theme.colors.blue[500],
-          2: theme.colors.blue[600],
-          3: theme.colors.blue[700],
-          foreground: theme.colors.neutral[100],
+          DEFAULT: colors.blue[500],
+          2: colors.blue[600],
+          3: colors.blue[700],
+          foreground: colors.neutral[100],
         },
 
-        "focus-ring": "black",
-      }),
+        "focus-ring": colors.blue[500],
+      },
     },
   },
   plugins: [],

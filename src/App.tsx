@@ -1,9 +1,11 @@
 import typography from "./design-system/typography";
-import { buttonConfig, buttons } from "./design-system/buttons";
+import { buttonConfig, buttons } from "./design-system/button";
+import { inputConfig, inputs } from "./design-system/input";
+import { checkboxConfig, checkboxes } from "./design-system/checkbox";
 
 function App() {
   return (
-    <div className="space-y-10 py-12">
+    <div className="space-y-10 py-12 w-screen overflow-x-hidden">
       <section className="container">
         <hgroup>
           <h1>Tailwind Design System</h1>
@@ -35,10 +37,10 @@ function App() {
         <div className="space-y-5">
           {Object.keys(buttonConfig.variants.style).map((styleName) => (
             <div key={styleName} className="space-y-2">
-              <div className="bg-neutral-200 text-neutral-800 text-xs rounded inline-block px-2 py-1">
+              <div className="text-xs inline-block font-medium">
                 {styleName}
               </div>
-              <div className="flex gap-4 items-start">
+              <div className="flex gap-4 items-start flex-wrap">
                 {Object.keys(buttonConfig.variants.state).map((stateName) => (
                   <button
                     key={stateName}
@@ -58,10 +60,139 @@ function App() {
         </div>
       </section>
 
+      {/* INPUT TEXT */}
       <section className="container space-y-7">
         <h2>
           <b>Input Text</b>
         </h2>
+
+        <div className="space-y-5">
+          {Object.keys(inputConfig.variants.style).map((styleName) => (
+            <div key={styleName} className="space-y-2">
+              <div className="text-xs inline-block font-medium">
+                {styleName}
+              </div>
+              <div className="flex gap-4 items-start flex-wrap">
+                {Object.keys(inputConfig.variants.state).map((stateName) => (
+                  <input
+                    type="text"
+                    key={stateName}
+                    className={
+                      inputs({
+                        size: inputConfig.defaultVariants.size,
+                        roundness: inputConfig.defaultVariants.roundness,
+                        style: styleName,
+                        state: stateName,
+                      }) + " w-40"
+                    }
+                    placeholder={stateName}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SELECT */}
+
+      <section className="container space-y-7">
+        <h2>
+          <b>Select</b>
+        </h2>
+
+        <div className="space-y-5">
+          {Object.keys(inputConfig.variants.style).map((styleName) => (
+            <div key={styleName} className="space-y-2">
+              <div className="text-xs inline-block font-medium">
+                {styleName}
+              </div>
+              <div className="flex gap-4 items-start flex-wrap">
+                {Object.keys(inputConfig.variants.state).map((stateName) => (
+                  <select
+                    key={stateName}
+                    className={
+                      inputs({
+                        size: inputConfig.defaultVariants.size,
+                        roundness: inputConfig.defaultVariants.roundness,
+                        style: styleName,
+                        state: stateName,
+                      }) + " w-40"
+                    }
+                  >
+                    <option>{stateName}</option>
+                  </select>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      {/* TEXTAREA */}
+      <section className="container space-y-7">
+        <h2>
+          <b>Textarea</b>
+        </h2>
+
+        <div className="space-y-5">
+          {Object.keys(inputConfig.variants.style).map((styleName) => (
+            <div key={styleName} className="space-y-2">
+              <div className="text-xs inline-block font-medium">
+                {styleName}
+              </div>
+              <div className="flex gap-4 items-start flex-wrap">
+                {Object.keys(inputConfig.variants.state).map((stateName) => (
+                  <textarea
+                    key={stateName}
+                    className={
+                      inputs({
+                        size: inputConfig.defaultVariants.size,
+                        roundness: inputConfig.defaultVariants.roundness,
+                        style: styleName,
+                        state: stateName,
+                      }) + " w-40"
+                    }
+                    placeholder={stateName}
+                  ></textarea>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CHECKBOX */}
+      <section className="container space-y-7">
+        <h2>
+          <b>Checkbox</b>
+        </h2>
+
+        <div className="space-y-5">
+          {Object.keys(checkboxConfig.variants.style).map((styleName) => (
+            <div key={styleName} className="space-y-2">
+              <div className="text-xs inline-block font-medium">
+                {styleName}
+              </div>
+              <div className="flex gap-4 items-start flex-wrap">
+                {Object.keys(checkboxConfig.variants.state).map((stateName) => (
+                  <label className="inline-flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      key={stateName}
+                      className={checkboxes({
+                        size: checkboxConfig.defaultVariants.size,
+                        roundness: checkboxConfig.defaultVariants.roundness,
+                        style: styleName,
+                        state: stateName,
+                      })}
+                    />
+                    {stateName}
+                  </label>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
     </div>
   );
